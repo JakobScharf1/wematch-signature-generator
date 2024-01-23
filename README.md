@@ -1,5 +1,6 @@
 # Signature Generator
-A VueJs Single Page Application to generate email signature for digitalturbine network members.
+A VueJs Single Page Application to generate email signatures.
+Bases on the signature generator by @shazzad.
 
 ## Project setup
 ```
