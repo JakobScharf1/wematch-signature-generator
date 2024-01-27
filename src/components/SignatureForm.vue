@@ -1,8 +1,7 @@
 <template>
   <form class="form">
     <div class="field field-select">
-      <div class="field-label">Company</div>
-      <div class="field-desc">Options: AdColony, Appreciate, Digital Turbine or Fyber.</div>
+      <div class="field-label">Unternehmen</div>
       <div class="field-control">
         <select v-model="form.company" autocomplete="organization">
           <option v-for="c in companies" :key="c.name" :value="c.name">{{c.name}}</option>
@@ -11,7 +10,7 @@
     </div>
 
     <div class="field field-text">
-      <div class="field-label">Full Name*</div>
+      <div class="field-label">Name*</div>
       <div class="field-error" v-show="nameError" v-html="nameError"></div>
       <div class="field-control">
         <input type="text" autocomplete="name" v-model="form.name" v-on:blur="nameBlured = true;" />
@@ -19,7 +18,7 @@
     </div>
 
     <div class="field field-text">
-      <div class="field-label">Job Title*</div>
+      <div class="field-label">Job-Titel*</div>
       <div class="field-error" v-show="jobTitleError" v-html="jobTitleError"></div>
       <div class="field-control">
         <input type="text" autocomplete="organization-title" v-model="form.jobTitle" v-on:blur="jobTitleBlured = true;" />
@@ -27,17 +26,8 @@
     </div>
 
     <div class="field field-text">
-      <div class="field-label">Office Number</div>
-      <div class="field-desc">Enter in the order of country code, area code, number. Use dashes between each section.</div>
-      <div class="field-error" v-show="officeError" v-html="officeError"></div>
-      <div class="field-control">
-        <input type="text" autocomplete="tel" v-model="form.office" v-on:blur="officeBlured = true;" />
-      </div>
-    </div>
-
-    <div class="field field-text">
-      <div class="field-label">Mobile Number</div>
-      <div class="field-desc">Enter in the order of country code, area code, number. Use dashes between each section.</div>
+      <div class="field-label">Telefonnummer</div>
+      <div class="field-desc">Bitte angeben inkl. +49 und ohne 0 am Anfang.</div>
       <div class="field-error" v-show="mobileError" v-html="mobileError"></div>
       <div class="field-control">
         <input type="text" autocomplete="tel" v-model="form.mobile" v-on:blur="mobileBlured = true;" />
@@ -86,7 +76,7 @@ export default {
       let element = this.$parent.$refs.preview;
 
       if ( ! element ) {
-        alert('Preview element not yet ready');
+        alert('Preview noch nicht bereit.');
         return false;
       }
 
@@ -116,7 +106,7 @@ export default {
       let element = this.$parent.$refs.preview;
 
       if ( ! element ) {
-        alert('Preview element not yet ready');
+        alert('Preview noch nicht bereit.');
         return false;
       }
 
@@ -150,7 +140,7 @@ export default {
 
       var value = this.form.name.trim();
       if ( ! value ) {
-        return 'Please fill in your name.';
+        return 'Bitte Namen angeben.';
       }
 
       return '';
@@ -160,22 +150,22 @@ export default {
         return '';
       }
 
-      var value = this.form.jobTitle.trim();
+      const value = this.form.jobTitle.trim();
       if ( ! value ) {
-        return 'Please fill in your job title.';
+        return 'Bitte Job-Titel angeben.';
       }
 
       return '';
     },
     officeError() {
-      var value = this.form.office.trim();
+      const value = this.form.office.trim();
       if ( ! value || value === '+' || ( ! this.officeBlured  && ! this.mobileBlured ) ) {
         return '';
       }
 
       var phoneNumberPattern = /^\+?[0-9-]+$/;  
       if ( phoneNumberPattern.test( value ) == false ) {
-        return 'Numbers only, use dashes to separate.';
+        return 'Bitte nur Zahlen eingeben.';
       }
 
       return '';
@@ -188,20 +178,20 @@ export default {
 
       var phoneNumberPattern = /^\+?[0-9-]+$/;  
       if ( phoneNumberPattern.test( value ) == false ) {
-        return 'Numbers only, use dashes to separate.';
+        return 'Bitte nur Zahlen eingeben.';
       }
 
       return '';
     },
 
     btnTitle() {
-      return this.formValid ? '' : 'Please fill up the form first.'
+      return this.formValid ? '' : 'Bitte zunächst das Formular ausfüllen.'
     },
     copySignatureBtnText() {
-      return this.copiedSignature ? 'Copied' : 'Copy Signature'
+      return this.copiedSignature ? 'Kopiert' : 'Signatur kopieren'
     },
     copyHtmlBtnText() {
-      return this.copiedHtml ? 'Copied' : 'Copy Html'
+      return this.copiedHtml ? 'Kopiert' : 'HTML kopieren'
     },
     formValid() {
       if ( ! this.form.name) {

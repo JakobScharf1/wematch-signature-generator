@@ -3,8 +3,7 @@
     <header class="header">
       <div class="container">
         <div class="inner">
-          <LogoFile class="logo" />
-          <h1>Email Signature Generator</h1>
+          <h1>Email-Signatur Generator</h1>
        </div>
       </div>
     </header>
@@ -12,7 +11,7 @@
       <div class="container">
         <div class="inner">
           <div class="form-section">
-            <h2>Enter Details</h2>
+            <h2>Daten angeben</h2>
             <div class="box">
               <SignatureForm 
                 :companies="companies" 
@@ -24,7 +23,7 @@
           </div>
           <div class="preview-section">
             <div class="preview-sticky">
-              <h2>Signature Preview</h2>
+              <h2>Preview</h2>
               <SignaturePreview 
                 :companies="companies" 
                 :form="form"
@@ -40,7 +39,6 @@
 </template>
 
 <script>
-import LogoFile from './assets/logo.svg?inline'
 import SignatureForm from './components/SignatureForm.vue'
 import SignaturePreview from './components/SignaturePreview.vue'
 import SignatureIntegrations from './components/SignatureIntegrations.vue'
@@ -48,7 +46,6 @@ import SignatureIntegrations from './components/SignatureIntegrations.vue'
 export default {
   name: 'App',
   components: {
-    LogoFile,
     SignatureForm,
     SignaturePreview,
     SignatureIntegrations
@@ -58,7 +55,7 @@ export default {
       useCache: window.esgConfig.useCache || true,
       companies: window.esgConfig.companies || [],
       form: {
-        company: 'AdColony',
+        company: 'WeMatch Consulting GmbH',
         name: '',
         jobTitle: '',
         office: '+',
@@ -85,7 +82,7 @@ body{
 .container {
     margin: 0 auto;
     padding: 0 20px;
-    max-width: 1080px;
+    /*max-width: 1080px;*/
 }
 
 h1 {
@@ -175,8 +172,7 @@ ol li:last-child{
 /* Header */
 .header {
     color: #fff;
-    background-color: #163f5f;
-    background: linear-gradient(125.85deg, #214A6A 29.73%, #002848 98.42%);
+    background-color: #001f25;
 }
 .header .inner {
     padding: 20px 0 10px;
@@ -230,7 +226,7 @@ ol li:last-child{
         margin-right: 20px;
     }
     .main .preview-section{
-        max-width: 580px;
+        /*max-width: 580px;*/
     }
     .preview-sticky{
         top: 20px;
